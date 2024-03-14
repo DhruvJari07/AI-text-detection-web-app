@@ -8,6 +8,8 @@ matplotlib
 seaborn
 nltk
 scikit-learn
+ensure==1.0.2
+python-box==6.0.2
 pyYAML
 tqdm
 joblib

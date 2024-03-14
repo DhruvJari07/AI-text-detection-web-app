@@ -4,7 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format = '[%(asctime)s]: %(message)s:')
 
-project_name = "AI-Text-Detection"
+project_name = "AI_Text_Detection"
 
 list_of_files = [
     ".github/workflows/.gitkeep",

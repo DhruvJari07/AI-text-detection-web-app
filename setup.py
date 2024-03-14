@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "AI-text-detection-web-app"
 AUTHOR_USER_NAME = "DhruvJari07"
-SRC_REPO = "AI-Text-Detection"
+SRC_REPO = "AI_Text_Detection"
 AUTHOR_EMAIL = "jariwaladhruv@yahoo.com"
 
 
