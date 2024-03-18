@@ -6,4 +6,6 @@ from pathlib import Path
 class DataIngestionConfig:
     root_dir: Path
     source_URL: str
-    local_data_file: Path
+    raw_data_file: Path
+    train_data_file: Path
+    test_data_file: Path
