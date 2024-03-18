@@ -1,29 +1,28 @@
-import sys
 from AI_Text_Detection.config.configuration import ConfigurationManager
-from AI_Text_Detection.components.data_ingestion import DataIngestion
+from AI_Text_Detection.components.data_transformation import DataTransformation
 from AI_Text_Detection.exception import CustomException
 from AI_Text_Detection import logger
+import sys
 
-STAGE_NAME = "Data Ingestion Stage"
+STAGE_NAME = "Data Transformation Stage"
 
-class DataIngestionTrainingPipeline:
+class DataTransformationPipeline:
     def __init__(self):
         pass
 
     def main(self):
         try:
             config = ConfigurationManager()
-            data_ingestion_config = config.get_data_ingestion_config()
-            data_ingestion = DataIngestion(config=data_ingestion_config)
-            data_ingestion.download_file()
-            data_ingestion.initiate_data_ingestion()
+            data_transformation_config = config.get_data_transformation_config()
+            data_transformation = DataTransformation(config=data_transformation_config)
+            X_train, y_train, X_test, y_test = data_transformation.initiate_data_transformation()
         except Exception as e:
             raise CustomException(e, sys)
         
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionTrainingPipeline()
+        obj = DataTransformationPipeline()
         obj.main()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:

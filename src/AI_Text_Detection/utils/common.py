@@ -8,7 +8,9 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
-
+import string
+import nltk
+from nltk.corpus import stopwords
 
 
 
@@ -123,3 +125,29 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+@ensure_annotations
+def remove_tags(text: str) -> str:
+    tags = ["\n", "\""]
+    for tag in tags:
+        text = text.replace(tag, "")
+
+    return text
+
+@ensure_annotations
+def remove_punctuation(texts: str) -> str:
+    new_text = [text for text in texts if text not in string.punctuation]
+    new_text = "".join(new_text)
+    return new_text
+
+@ensure_annotations
+def remove_stopwords(text: str) -> str:
+    stop_words = set(stopwords.words('english'))
+    words = nltk.word_tokenize(text)
+    filtered_words = [word for word in words if word.lower() not in stop_words]
+    filtered_words= ' '.join(filtered_words)
+    return filtered_words
+
+def lower_case(text):
+    text = text.lower()
+    return text

@@ -9,3 +9,9 @@ class DataIngestionConfig:
     raw_data_file: Path
     train_data_file: Path
     test_data_file: Path
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    train_data_file: Path
+    test_data_file: Path
