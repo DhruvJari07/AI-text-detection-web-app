@@ -1,6 +1,6 @@
 from AI_Text_Detection.constants import *
-from AI_Text_Detection.utils.common import read_yaml, create_directories
-from AI_Text_Detection.entity.config_entity import DataIngestionConfig, DataTransformationConfig
+from AI_Text_Detection.utils.common import read_yaml, create_directories, save_object
+from AI_Text_Detection.entity.config_entity import DataIngestionConfig, DataTransformationConfig, ModelTrainingConfig
 
 class ConfigurationManager:
     def __init__(
@@ -42,3 +42,15 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        config = self.config.model_training
+
+        create_directories([config.root_dir])
+
+        model_training_config = ModelTrainingConfig(
+            root_dir=config.root_dir,
+            trained_model_path=config.trained_model_path
+        )
+
+        return model_training_config
