@@ -1,0 +1,54 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/AI_Text_Detection/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 9308b90daf88de0cea5f117ce7dc2423
+      size: 640
+    - path: src/AI_Text_Detection/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 9f23fa66384590b40684d66504a2e34a
+      size: 1129
+    outs:
+    - path: artifacts/data_ingestion/data.csv
+      hash: md5
+      md5: 4d1ae579877c4090c85f8160f3ea7034
+      size: 1087040
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 55580ec0a3975aff4245f252209b510c
+      size: 228198
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: 0cf75a9bf3a3c061b8282dcdac3c0c63
+      size: 859359
+  data_transform_model_training:
+    cmd: python src/AI_Text_Detection/pipeline/train_pipeline.py
+    deps:
+    - path: artifacts/data_ingestion/data.csv
+      hash: md5
+      md5: 4d1ae579877c4090c85f8160f3ea7034
+      size: 1087040
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 55580ec0a3975aff4245f252209b510c
+      size: 228198
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: 0cf75a9bf3a3c061b8282dcdac3c0c63
+      size: 859359
+    - path: src/AI_Text_Detection/pipeline/stage_02_data_transformation.py
+      hash: md5
+      md5: 172489c4168c89d3fdec1632567b2a55
+      size: 1453
+    - path: src/AI_Text_Detection/pipeline/train_pipeline.py
+      hash: md5
+      md5: 0ddf8e0465e4cc187b557e22a8deab7c
+      size: 1954
+    outs:
+    - path: artifacts/model_training/model.pkl
+      hash: md5
+      md5: ae85c67053b614e2f496786a94e9372b
+      size: 365719

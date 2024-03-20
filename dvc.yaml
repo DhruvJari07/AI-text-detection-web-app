@@ -1,0 +1,23 @@
+stages:
+  data_ingestion:
+    cmd: python src/AI_Text_Detection/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/AI_Text_Detection/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/data.csv
+      - artifacts/data_ingestion/test.csv
+      - artifacts/data_ingestion/train.csv
+
+
+
+  data_transform_model_training:
+    cmd: python src/AI_Text_Detection/pipeline/train_pipeline.py
+    deps:
+      - src/AI_Text_Detection/pipeline/train_pipeline.py
+      - src/AI_Text_Detection/pipeline/stage_02_data_transformation.py
+      - artifacts/data_ingestion/data.csv
+      - artifacts/data_ingestion/test.csv
+      - artifacts/data_ingestion/train.csv
+    outs:
+      - artifacts/model_training/model.pkl

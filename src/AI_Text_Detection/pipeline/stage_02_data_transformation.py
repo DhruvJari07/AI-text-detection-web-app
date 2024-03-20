@@ -21,9 +21,10 @@ class DataTransformationPipeline:
             self.X_train, self.y_train, self.X_test, self.y_test = data_transformation.initiate_data_transformation()
         except Exception as e:
             raise CustomException(e, sys)
+
         
 
-
+"""
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
@@ -34,3 +35,5 @@ if __name__ == '__main__':
     except Exception as e:
         logger.exception(e)
         raise CustomException(e, sys)
+
+"""
