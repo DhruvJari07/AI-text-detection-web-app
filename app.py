@@ -18,7 +18,8 @@ def main():
         prediction = predictor.predict([user_input])
 
         # Display prediction result
-        st.write(f"Prediction: Your text is {prediction} generated.")
+        st.write(f"Prediction: Your text is **{prediction}** generated.")
+
 
 if __name__ == "__main__":
     main()
