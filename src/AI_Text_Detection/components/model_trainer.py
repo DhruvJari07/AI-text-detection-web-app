@@ -8,6 +8,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB, ComplementNB
 from sklearn.svm import SVC, LinearSVC
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.metrics import accuracy_score
 
 class ModelTraining:
@@ -22,24 +23,20 @@ class ModelTraining:
         try: 
             logger.info(f"model pipeline building initiated")
 
-            pipelineMNB = Pipeline([
-                ('count_vectorizer', CountVectorizer(stop_words='english')),  # Step 1: CountVectorizer
-                ('tfidf_transformer', TfidfTransformer()),  # Step 2: TF-IDF Transformer
-                ('naive_bayes', MultinomialNB())])
+            clf1 = RandomForestClassifier(n_estimators=50, random_state=1)
+            clf2 = LinearSVC()
+            clf3 = ComplementNB()
 
-            pipelineCNB = Pipeline([
-                ('count_vectorizer', CountVectorizer(stop_words='english')),  # Step 1: CountVectorizer
-                ('tfidf_transformer', TfidfTransformer()),  # Step 2: TF-IDF Transformer
-                ('Complement_Naive_Bayes', ComplementNB())])
+            clf = VotingClassifier(estimators=[('RFC', clf1), ('SVC', clf2), ('CNB', clf3)], voting='hard')
 
-            pipelineSVC = Pipeline([
+            model_pipeline = Pipeline([
                 ('count_vectorizer', CountVectorizer(stop_words='english')),  # Step 1: CountVectorizer
                 ('tfidf_transformer', TfidfTransformer()),  # Step 2: TF-IDF Transformer
-                ('Linear SVC', LinearSVC())])
+                ('Ensemble_Voting', clf)])
             
             logger.info(f"Model pipeline created")
             
-            return {'naive_bayes':pipelineMNB, 'Complement_Naive_Bayes':pipelineCNB, 'Linear SVC':pipelineSVC}
+            return model_pipeline #{'naive_bayes':pipelineMNB, 'Complement_Naive_Bayes':pipelineCNB, 'Linear SVC':pipelineSVC}
 
 
         except Exception as e:
@@ -54,35 +51,25 @@ class ModelTraining:
         try: 
             logger.info(f"model traininng initiated")
 
-            model_accuracy = {}
+            model_pipeline.fit(X_train, y_train)
+            y_pred = model_pipeline.predict(X_test)
+            accuracy = accuracy_score(y_test, y_pred)
+            """model_accuracy = {}
             for model_name, pipeline in model_pipeline.items():
                 pipeline.fit(X_train, y_train)
                 y_pred = pipeline.predict(X_test)
                 accuracy = accuracy_score(y_test, y_pred)
-                model_accuracy[model_name] = accuracy
+                model_accuracy[model_name] = accuracy"""
 
             
             logger.info(f"model traininng completed")
 
             ## To get best model score from dict
-            best_model_score = max(sorted(model_accuracy.values()))
+            save_object(file_path=self.config.trained_model_path, obj=model_pipeline)
+            logger.info(f"model have the accuracy of {accuracy}")
+            logger.info(f"model saved to artifacts/model_training for prediction")
 
-            ## To get best model name from dict
-
-            best_model_name = list(model_accuracy.keys())[
-                list(model_accuracy.values()).index(best_model_score)
-            ]
-
-            best_model = model_pipeline[best_model_name]
-
-            print(model_accuracy)
-            print(best_model_name)
-            save_object(file_path=self.config.trained_model_path, obj=best_model)
-            logger.info(f"model accuracy: {model_accuracy}")
-            logger.info(f"model {best_model_name} have the best accuracy of {model_accuracy[best_model_name]}")
-            logger.info(f"model {best_model_name} saved to artifacts/model_training for prediction")
-
-            return model_accuracy
+            return accuracy
         
     
         except Exception as e:
