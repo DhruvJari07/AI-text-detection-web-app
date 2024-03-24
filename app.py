@@ -9,10 +9,21 @@ def main():
     # Text input
     user_input = st.text_area("Enter your text here:", "")
 
+    # Model selection
+    selected_model = st.selectbox("Select Model", ["ML Model", "CNN Model"])
+
+
     # Predict button
     if st.button("Predict"):
+        if selected_model == "Default Model":
+            # Instantiate PredictPipeline
+            predictor = PredictPipeline()
+        elif selected_model == "CNN Model":
+            # Instantiate PredictPipeline2
+            predictor = PredictPipeline2()
+        
         # Instantiate PredictPipeline
-        predictor = PredictPipeline()
+        # predictor = PredictPipeline()
 
         # Make prediction
         prediction = predictor.predict([user_input])
