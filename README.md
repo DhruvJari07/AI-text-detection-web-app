@@ -6,3 +6,8 @@ Text Classification: Input any text into the web app to determine whether it was
 User-Friendly Interface: The web app provides a simple and intuitive interface for easy text input and classification.
 Fast and Efficient: The classification process is quick and efficient, providing near-instantaneous results.
 Accessibility: Access the web app from any device with an internet connection, making it convenient for users.
+Multiple Model Selection: Select Traditional ML model or Deep-Learning Model as per your preference.
+
+# Target Audience:
+Educators and Academic Institutions: Teachers, professors, and educational institutions can utilize the app to verify the authenticity of student submissions, ensuring compliance with academic integrity policies and detecting instances of plagiarism or unauthorized AI-generated content.
+Editors: Writers, journalists, and editors can leverage the app to verify the authenticity of text before publication, ensuring that the content aligns with ethical standards and guidelines.
