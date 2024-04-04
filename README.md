@@ -11,3 +11,6 @@ Multiple Model Selection: Select Traditional ML model or Deep-Learning Model as 
 # Target Audience:
 Educators and Academic Institutions: Teachers, professors, and educational institutions can utilize the app to verify the authenticity of student submissions, ensuring compliance with academic integrity policies and detecting instances of plagiarism or unauthorized AI-generated content.
 Editors: Writers, journalists, and editors can leverage the app to verify the authenticity of text before publication, ensuring that the content aligns with ethical standards and guidelines.
+
+# Model's used:
+There are two models trained to achieve this task. First model was trained using ensemble model of traditional ML algorithms such as RandomForestClassifier, Linear SVC, Naive Bayes etc. For other model, deep learning model (BERT) was used to fine-tune this pretrained model.
