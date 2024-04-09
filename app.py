@@ -7,7 +7,7 @@ def main():
     st.write("To detect if your text is written by human or AI, enter your text below.")
 
     # Text input
-    user_input = st.text_area("Enter your text here:", "")
+    user_input = st.text_area("Enter your input text here:", "")
 
     # Model selection
     # selected_model = st.selectbox("Select Model", ["ML Model", "CNN Model"])
