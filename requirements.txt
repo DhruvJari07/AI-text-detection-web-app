@@ -14,4 +14,5 @@ pyYAML
 tqdm
 joblib
 streamlit
+python-dotenv
 -e .

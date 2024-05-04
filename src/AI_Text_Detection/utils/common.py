@@ -12,7 +12,9 @@ import string
 import nltk
 from nltk.corpus import stopwords
 import pickle
-import sys
+import requests
+import streamlit as st
+import os
 
 
 
@@ -173,3 +175,14 @@ def load_object(file_path):
 
     except Exception as e:
         raise e
+    
+
+def predict_class_aws(Lambda_api_url, text: str):
+    
+    req = {
+            "text": text
+        }
+
+    r = requests.post(Lambda_api_url, json=req)
+
+    return r.json()["predicted_label"]
