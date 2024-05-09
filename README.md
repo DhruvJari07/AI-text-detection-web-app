@@ -31,7 +31,8 @@ The AI Text-Image Detection app was deployed using AWS. The following architectu
 
 Check out the following video demo to see the AI Text-Image Detection app in action:
 
-![AI Text-Image Detection Demo](media/Ai_detection_app_demo.mp4)
+[![AI Text-Image Detection Demo](https://img.youtube.com/vi/6T1OZuWdcr4/0.jpg)](https://www.youtube.com/watch?v=6T1OZuWdcr4)
+
 
 Click on the image above to watch the demo video.
 
