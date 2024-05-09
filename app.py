@@ -2,12 +2,12 @@ import os
 import streamlit as st
 import requests
 import json
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from AI_Text_Detection.pipeline.Predict_pipeline import PredictPipeline
 from AI_Text_Detection.utils.common import predict_class_aws
 
 
-load_dotenv()
+#load_dotenv()
 
 Lambda_api_url = os.getenv("LAMBDA_API_URL")
 LAMBDA_IMAGE_ENDPOINT = os.getenv("LAMBDA_API_IMAGE_ENDPOINT")
