@@ -74,7 +74,7 @@ def image_detection():
                 headers = {"Content-Type": "image/jpeg"}
 
                 # Send the image data as binary in the request
-                response = requests.post(LAMBDA_IMAGE_ENDPOINT, data=image_data, headers=headers)
+                response = requests.post(LAMBDA_IMAGE_ENDPOINT, data=image_data, headers=headers) # type: ignore
                 results = json.loads(response.text)
                 # Print the response
                 for result in results:
