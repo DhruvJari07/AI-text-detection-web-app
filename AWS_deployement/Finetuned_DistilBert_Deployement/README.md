@@ -137,7 +137,7 @@ Go to the configuration -> triggers and you will see your API endpoints.
 
 ![API_endpoints](API_gateway_4.png)
 
-Now your api is ready, through which you can interact with your Lambda App by sending a request, just like we did 
+Now your api is ready, through which you can interact with your Lambda App by sending a request, just like we did locally.
 
 ### 6. Test your API
 Test with Curl. We can use the following curl command to test our API:
