@@ -22,6 +22,12 @@ The AI Text-Image Detection app was deployed using AWS. The following architectu
 
 ![Architecture](media/final_architecture_AI_detection.jpg)
 
+To see detailed deployement instructions, click below:
+
+1. [Traditional_Model_Deployement](AWS_deployement/Traditional_Model_Deployement)
+1. [Finetuned_DistilBert_Deployement](AWS_deployement/Finetuned_DistilBert_Deployement)
+1. [Finetuned_ViT_Deployement](AWS_deployement/Finetuned_ViT_Deployement)
+
 
 ## Demo
 
